@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>task12</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            margin: 20px 0;
+        }
+        input {
+            width: 400px;
+            padding: 6px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 6px 15px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>验证字符串格式</h1>
+    <div class="container">
+        <p>请输入字符串</p>
+        <input type="text" id="strInput">
+        <button onclick="validateName()">验证</button>
+    </div>
+    <div class="result"></div>
+
+    <script>
+        function tst_name(str) {
+            const parts = str.split(' ');
+            if (parts.length !== 2) return false;
+
+            const [firstPart, letter] = parts;
+            if (!/^[A-Z]$/.test(letter)) return false;
+
+            const nameParts = firstPart.split(',');
+            if (nameParts.length !== 2) return false;
+
+            const [string1, string2] = nameParts;
+            if (!/^[A-Z][a-z]*$/.test(string1)) return false;
+            if (!/^[A-Z][a-z]*$/.test(string2)) return false;
+
+            return true;
+        }
+
+        function validateName() {
+            const inputStr = document.getElementById('strInput').value;
+            const resultDiv = document.querySelector('.result');
+
+            if (!inputStr.trim()) {
+                resultDiv.textContent = "请输入有效的字符串";
+                return;
+            }
+
+            const isValid = tst_name(inputStr);
+            resultDiv.innerHTML = `
+                <p>输入的字符串："${inputStr}"</p>
+                <p>格式验证结果：${isValid ? '符合要求（true）' : '不符合要求（false）'}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

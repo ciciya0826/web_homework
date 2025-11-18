@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>task3</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        #result {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>计算三个数值的最大值</h1>
+    <div id="result"></div>
+
+    <script>
+        let num1 = parseFloat(prompt("请输入第一个数："));
+        let num2 = parseFloat(prompt("请输入第二个数："));
+        let num3 = parseFloat(prompt("请输入第三个数："));
+
+        const resultDiv = document.getElementById('result');
+
+        if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+            resultDiv.textContent = "输入无效!";
+        } else {
+            const maxValue = Math.max(num1, num2, num3);
+            resultDiv.textContent = 
+                `三个数 ${num1}、${num2}、${num3} 的最大值是：${maxValue}`;
+        }
+    </script>
+</body>
+</html>

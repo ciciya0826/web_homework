@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>task6</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>文本单词排序</h1>
+    <p>请在弹出的对话框中输入一行文本</p>
+    <div class="result"></div>
+
+    <script>
+        let inputText = prompt("请输入一行文本：");
+        const resultDiv = document.querySelector('.result');
+
+        if (inputText === null) {
+            resultDiv.textContent = "未输入";
+        } else {
+            const words = inputText.trim().split(/\s+/);
+
+            if (words.length === 1 && words[0] === "") {
+                resultDiv.textContent = "没有有效单词";
+            } else {
+                const sortedWords = words.sort((a, b) => {
+                    return a.toLowerCase().localeCompare(b.toLowerCase());
+                });
+
+                resultDiv.innerHTML = `
+                    <p>原始单词：${words.join('、')}</p>
+                    <p>按字母顺序排序后：${sortedWords.join('、')}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

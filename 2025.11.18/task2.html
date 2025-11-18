@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task2</title>
+</head>
+<body>
+
+    <h2>请选择你最喜欢的颜色：</h2>
+
+    <button value="red">red</button>
+    <button value="blue">blue</button>
+    <button value="green">green</button>
+    <button value="yellow">yellow</button>
+    <button value="orange">orange</button>
+
+    <p id="message"></p>
+
+    <script>
+        function selectColor() {
+            const color = this.value;
+            const msg = "你最喜欢的颜色是：" + color;
+            document.getElementById("message").textContent = msg;
+        }
+
+        const buttons = document.querySelectorAll("button");
+        buttons.forEach(btn => {
+            btn.onclick = selectColor; 
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>学院足球联赛比分表</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      width: 70%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 15px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #e8e8e8;
+      font-size: 18px;
+    }
+
+    .team {
+      font-family: "Brush Script MT", cursive;
+      font-size: 22px;
+    }
+    .computerScience {
+      color: #1E90FF; 
+    }
+
+    .arts {
+      color: #FF69B4; 
+    }
+
+    .PE {
+      color: #32CD32; 
+    }
+
+    .math {
+      color: #FFA500; 
+    }
+
+    .score-win {
+      font-size: 24px;
+      font-weight: bold;
+      color: #000;
+      font-family: "Arial Black", Gadget, sans-serif;
+    }
+
+    .score-lose {
+      font-size: 18px;
+      color: #777;
+      font-family: "Times New Roman", serif;
+    }
+
+    tr:hover {
+      background-color: #f0f8ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>学院足球联赛比分表</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>日期</th>
+        <th>主队</th>
+        <th>比分</th>
+        <th>客队</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2025-10-05</td>
+        <td class="team computerScience">计算机学院</td>
+        <td><span class="score-win">3</span> : <span class="score-lose">1</span></td>
+        <td class="team arts">文学院</td>
+      </tr>
+      <tr>
+        <td>2025-10-06</td>
+        <td class="team PE">体育学院</td>
+        <td><span class="score-lose">0</span> : <span class="score-win">2</span></td>
+        <td class="team math">数学学院</td>
+      </tr>
+      <tr>
+        <td>2025-10-07</td>
+        <td class="team arts">文学院</td>
+        <td><span class="score-win">4</span> : <span class="score-lose">3</span></td>
+        <td class="team math">数学学院</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

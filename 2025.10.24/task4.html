@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>task4</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>计算第n个斐波那契数列值</h1>
+    <div id="result"></div>
+
+    <script>
+        let input = prompt("请输入斐波那契数列的序号n");
+        let n = parseInt(input); // 转换为整数
+        const resultDiv = document.getElementById('result');
+
+        if (isNaN(n) || n < 1) {
+            resultDiv.textContent = "输入无效！";
+        } else {
+            let a = 1, b = 1;
+            let fibValue = n <= 2 ? 1 : 0;
+
+            for (let i = 3; i <= n; i++) {
+                fibValue = a + b;
+                a = b;
+                b = fibValue;
+            }
+
+            resultDiv.innerHTML = `
+                您输入的序号 n = ${n}<br>
+                第${n}个斐波那契数列值为：<strong>${fibValue}</strong><br>
+            `;
+        }
+    </script>
+</body>
+</html>

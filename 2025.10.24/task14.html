@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>tas14</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            margin: 20px 0;
+        }
+        input {
+            width: 300px;
+            padding: 6px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 6px 15px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>数值逆序转换</h1>
+    <div class="container">
+        <p>请输入一个数值，将其数字按逆序输出</p>
+        <input type="number" id="numInput">
+        <button onclick="reverseNumber()">逆序转换</button>
+    </div>
+    <div class="result"></div>
+
+    <script>
+        function reverser(num) {
+            const isNegative = num < 0;
+            const absNum = Math.abs(num); 
+            
+            const reversedStr = absNum.toString().split('').reverse().join('');
+
+            const reversedNum = isNegative ? -parseInt(reversedStr, 10) : parseInt(reversedStr, 10);
+            
+            return reversedNum;
+        }
+
+        function reverseNumber() {
+            const input = document.getElementById('numInput').value;
+            const resultDiv = document.querySelector('.result');
+
+            if (input === '') {
+                resultDiv.textContent = "请输入有效的数值";
+                return;
+            }
+
+            const num = parseFloat(input);
+            if (isNaN(num)) {
+                resultDiv.textContent = "输入无效";
+                return;
+            }
+
+            const reversed = reverser(num);
+
+            resultDiv.innerHTML = `
+                <p>输入的数值：${num}</p>
+                <p>数字逆序后：${reversed}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

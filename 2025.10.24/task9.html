@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>task9</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            margin: 20px 0;
+        }
+        #result {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>统计以ie或y结尾的姓名</h1>
+    <div class="container">
+        <p>请输入姓名列表（用英文逗号分隔）</p>
+        <input type="text" id="nameInput" placeholder="输入姓名，用逗号分隔">
+        <button onclick="calculate()">统计</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function e_names(names) {
+            let count = 0;
+            for (let name of names) {
+                const trimmedName = name.trim().toLowerCase();
+                if (trimmedName.endsWith('ie') || trimmedName.endsWith('y')) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        function calculate() {
+            const input = document.getElementById('nameInput').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!input.trim()) {
+                resultDiv.textContent = "请输入有效的姓名列表";
+                return;
+            }
+
+            const names = input.split(',').map(name => name.trim());
+
+            const count = e_names(names);
+
+            resultDiv.innerHTML = `
+                <p>您输入的姓名：${names.join('、')}</p>
+                <p>以 "ie" 或 "y" 结尾的姓名共有：<strong>${count}</strong> 个</p>
+            `;
+        }
+    </script>
+</body>
+</html>

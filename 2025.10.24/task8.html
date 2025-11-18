@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>task8</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            margin: 20px 0;
+        }
+        input {
+            width: 300px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+        .result {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>数组去0操作</h1>
+    <div class="container">
+        <p>请输入数值数组（用英文逗号分隔）</p>
+        <input type="text" id="arrayInput">
+        <button onclick="processArray()">处理数组</button>
+    </div>
+    <div class="result"></div>
+
+    <script>
+        function noZeros(arr) {
+            const hasZero = arr.includes(0);
+
+            for (let i = arr.length - 1; i >= 0; i--) {
+                if (arr[i] === 0) {
+                    arr.splice(i, 1);
+                }
+            }
+            return hasZero;
+        }
+
+        function processArray() {
+            const input = document.getElementById('arrayInput').value;
+            const resultDiv = document.querySelector('.result');
+
+            if (!input.trim()) {
+                resultDiv.textContent = "请输入有效的数值数组";
+                return;
+            }
+
+            const inputArray = input.split(',')
+                .map(item => item.trim()) 
+                .filter(item => item !== '')
+                .map(Number); 
+
+            if (inputArray.some(isNaN)) {
+                resultDiv.textContent = "输入包含无效数值";
+                return;
+            }
+
+            const originalArray = [...inputArray];
+
+            const hasZero = noZeros(inputArray);
+
+            resultDiv.innerHTML = `
+                <p>原始数组：[${originalArray.join(', ')}]</p>
+                <p>去除0值后的数组：[${inputArray.join(', ')}]</p>
+                <p>是否包含过0值：${hasZero ? '是' : '否'}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

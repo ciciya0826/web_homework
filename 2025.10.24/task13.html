@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>task13</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            margin: 20px 0;
+        }
+        textarea {
+            width: 400px;
+            height: 120px;
+            padding: 6px;
+            margin-bottom: 10px;
+            resize: vertical;
+        }
+        button {
+            padding: 6px 15px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>计算矩阵每行的平均值</h1>
+    <div class="container">
+        <p>请输入二维数值数组</p>
+        <ul>
+            <li>每行数据用英文逗号分隔数值（如 1,2,3）</li>
+            <li>不同行用英文分号分隔（如 1,2,3;4,5,6）</li>
+            <li>示例：1,3,5;2,4,6;7,8,9</li>
+        </ul>
+        <textarea id="matrixInput"></textarea><br>
+        <button onclick="calculateRowAverages()">计算每行平均值</button>
+    </div>
+    <div class="result"></div>
+
+    <script>
+        function rowAverages(matrix) {
+            const averages = [];
+            
+            for (let row of matrix) {
+                const rowSum = row.reduce((sum, num) => sum + num, 0);
+                const average = row.length === 0 ? 0 : rowSum / row.length;
+                averages.push(parseFloat(average.toFixed(2)));
+            }
+            
+            return averages;
+        }
+
+        function calculateRowAverages() {
+            const input = document.getElementById('matrixInput').value;
+            const resultDiv = document.querySelector('.result');
+
+            if (!input.trim()) {
+                resultDiv.textContent = "请输入有效的矩阵数据";
+                return;
+            }
+
+            const matrix = input.split(';') 
+                .map(rowStr => rowStr.trim()) 
+                .map(rowStr => {
+                    return rowStr.split(',')
+                        .map(item => item.trim())
+                        .filter(item => item !== '')
+                        .map(Number);
+                });
+
+            const hasInvalidNum = matrix.some(row => row.some(isNaN));
+            if (hasInvalidNum) {
+                resultDiv.textContent = "输入包含无效数值";
+                return;
+            }
+
+            const averages = rowAverages(matrix);
+
+            const formattedMatrix = matrix.map(row => `[${row.join(', ')}]`).join(', ');
+            const formattedAverages = `[${averages.join(', ')}]`;
+
+            resultDiv.innerHTML = `
+                <p>输入的矩阵：[${formattedMatrix}]</p>
+                <p>每行的平均值：${formattedAverages}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

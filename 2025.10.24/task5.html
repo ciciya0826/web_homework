@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>task5</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>姓名格式验证</h1>
+    <p>请在弹出的对话框中输入姓名</p>
+    <div id="result"></div>
+
+    <script>
+        let inputStr = prompt("请输入姓名（格式：姓氏，名字，中间名缩写）：");
+        const resultDiv = document.getElementById('result');
+
+        if (!inputStr) {
+            resultDiv.textContent = "Invalid name（输入为空）";
+        } else {
+            const parts = inputStr.split(',').map(part => part.trim());
+
+            if (parts.length !== 3) {
+                resultDiv.textContent = "Invalid name（格式错误）";
+            } else {
+                const [lastName, firstName, middleInitial] = parts;
+                let isValid = true;
+                let errorMsg = "";
+
+                if (lastName.length > 15) {
+                    isValid = false;
+                    errorMsg = "姓氏长度超过15个字符";
+                } else if (firstName.length > 15) {
+                    isValid = false;
+                    errorMsg = "名字长度超过15个字符";
+                } else if (middleInitial.length > 15) {
+                    isValid = false;
+                    errorMsg = "中间名缩写长度超过15个字符";
+                }
+
+                if (isValid) {
+                    resultDiv.textContent = "Valid name";
+                } else {
+                    resultDiv.textContent = `Invalid name（${errorMsg}）`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

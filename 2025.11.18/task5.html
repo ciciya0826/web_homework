@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task5</title>
+</head>
+<body>
+
+<h2>请输入要购买的水果数量</h2>
+
+<form onsubmit="return handleSubmit();">
+
+    <label>
+        苹果 (每个59美分):
+        <input type="text" value="0" oninput="updateTotal()">
+    </label><br><br>
+
+    <label>
+        桔子 (每个49美分):
+        <input type="text" value="0" oninput="updateTotal()">
+    </label><br><br>
+
+    <label>
+        香蕉 (每个39美分):
+        <input type="text" value="0" oninput="updateTotal()">
+    </label><br><br>
+
+    <button type="submit">提交</button>
+
+</form>
+
+<script>
+    const prices = [0.59, 0.49, 0.39];
+    let total = 0;
+
+    function updateTotal() {
+        const inputs = document.querySelectorAll("input[type='text']");
+        total = 0;
+
+        inputs.forEach((input, index) => {
+            let value = input.value.trim();
+
+            if (isNaN(value) || value === "") {
+                alert("请输入有效数字(0-99)");
+                input.value = 0;
+                value = 0;
+            }
+
+            let count = parseInt(value);
+
+            if (count < 0 || count > 99) {
+                alert("请输入0到99之间的数字");
+                input.value = 0;
+                count = 0;
+            }
+
+            total += count * prices[index];
+        });
+    }
+
+    function handleSubmit() {
+        let tax = total * 0.05;            
+        let finalCost = (total + tax).toFixed(2);
+
+        alert("Your total cost is $" + finalCost);
+
+        return false;
+    }
+</script>
+
+</body>
+</html>

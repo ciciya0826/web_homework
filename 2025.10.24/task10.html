@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>task10</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            margin: 20px 0;
+        }
+        input {
+            width: 300px;
+            padding: 6px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 6px 15px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>查找最左边的元音字母位置</h1>
+    <div class="container">
+        <p>请输入一个字符串</p>
+        <input type="text" id="strInput">
+        <button onclick="findFirstVowel()">查找</button>
+    </div>
+    <div class="result"></div>
+
+    <script>
+        function firstVowel(str) {
+            const vowels = ['a', 'e', 'i', 'o', 'u'];
+            const lowerStr = str.toLowerCase();
+            
+            for (let i = 0; i < lowerStr.length; i++) {
+                if (vowels.includes(lowerStr[i])) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        function findFirstVowel() {
+            const inputStr = document.getElementById('strInput').value;
+            const resultDiv = document.querySelector('.result');
+
+            if (!inputStr.trim()) {
+                resultDiv.textContent = "请输入有效的字符串";
+                return;
+            }
+
+            const position = firstVowel(inputStr);
+
+            if (position !== -1) {
+                const vowelChar = inputStr[position]; 
+                resultDiv.innerHTML = `
+                    <p>输入的字符串："${inputStr}"</p>
+                    <p>最左边的元音字母是："${vowelChar}"</p>
+                    <p>其位置（从0开始计数）：${position}</p>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <p>输入的字符串："${inputStr}"</p>
+                    <p>未找到任何元音字母（a、e、i、o、u）</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

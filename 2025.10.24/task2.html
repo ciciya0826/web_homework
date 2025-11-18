@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>task2</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        .fibonacci {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>前20个斐波那契数列</h1>
+    <div class="fibonacci">
+        <script>
+            let a = 1;
+            let b = 1;
+            let count = 20; 
+
+            document.write(`1. ${a}<br>`);
+            document.write(`2. ${b}<br>`);
+
+            for (let i = 3; i <= count; i++) {
+                let next = a + b; 
+                document.write(`${i}. ${next}<br>`);
+                a = b;
+                b = next;
+            }
+        </script>
+    </div>
+</body>
+</html>

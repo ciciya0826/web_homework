@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task8</title>
+</head>
+<body>
+
+    <h2>请选择你最喜欢的颜色：</h2>
+
+    <button data-color="red">red</button>
+    <button data-color="blue">blue</button>
+    <button data-color="green">green</button>
+    <button data-color="yellow">yellow</button>
+    <button data-color="orange">orange</button>
+
+    <p id="message"></p>
+
+    <script>
+
+        function selectColor(color) {
+            const msg = "你最喜欢的颜色是：" + color;
+            document.getElementById("message").textContent = msg;
+        }
+
+        const buttons = document.querySelectorAll("button");
+
+        buttons.forEach(btn => {
+            btn.addEventListener("click", function() {
+                const color = btn.getAttribute("data-color");
+                selectColor(color);
+            });
+        });
+
+    </script>
+
+</body>
+</html>

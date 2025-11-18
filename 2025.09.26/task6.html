@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>汽车分类嵌套有序列表示例</title>
+  <style>
+    ol.outer {
+      list-style-type: upper-roman;
+      font-weight: bold;
+      padding-left: 30px;
+    }
+    ol.middle {
+      list-style-type: upper-alpha;
+      padding-left: 30px;
+    }
+    ol.inner {
+      list-style-type: decimal;
+      padding-left: 30px;
+    }
+    .compact {
+      background-color: pink;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .midsize {
+      background-color: blue;
+      color: white;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .sports {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>关于汽车的嵌套有序列表</h1>
+  <ol class="outer">
+    <li class="compact">Compact
+      <ol class="middle">
+        <li>Two Door
+          <ol class="inner">
+            <li>Toyota Yaris</li>
+            <li>Honda Fit</li>
+            <li>Ford Fiesta</li>
+          </ol>
+        </li>
+        <li>Four Door
+          <ol class="inner">
+            <li>Nissan Versa</li>
+            <li>Kia Rio</li>
+            <li>Hyundai Accent</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li class="midsize">Midsize
+      <ol class="middle">
+        <li>Two Door
+          <ol class="inner">
+            <li>Honda Accord Coupe</li>
+            <li>Toyota Camry Solara</li>
+            <li>Nissan Altima Coupe</li>
+          </ol>
+        </li>
+        <li>Four Door
+          <ol class="inner">
+            <li>Toyota Camry</li>
+            <li>Honda Accord</li>
+            <li>Mazda6</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li class="sports">Sports
+      <ol class="middle">
+        <li>Coupe
+          <ol class="inner">
+            <li>Chevrolet Camaro</li>
+            <li>Ford Mustang</li>
+            <li>Dodge Challenger</li>
+          </ol>
+        </li>
+        <li>Convertible
+          <ol class="inner">
+            <li>Mazda MX-5 Miata</li>
+            <li>BMW Z4</li>
+            <li>Mercedes-Benz SLK</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</body>
+</html>

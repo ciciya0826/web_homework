@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task7</title>
+</head>
+<body>
+
+<h2>请输入以下信息</h2>
+
+<form onsubmit="return validateForm();">
+
+    <label>
+        姓:
+        <input type="text" id="lastName" onblur="checkLastName()">
+    </label>
+    <br><br>
+
+    <label>
+        名:
+        <input type="text" id="firstName" onblur="checkFirstName()">
+    </label>
+    <br><br>
+
+    <label>
+        中间名首字母:
+        <input type="text" id="middleInitial" maxlength="1" onblur="checkMiddleInitial()">
+    </label>
+    <br><br>
+
+    <label>
+        年龄(>17):
+        <input type="text" id="age" onblur="checkAge()">
+    </label>
+    <br><br>
+
+    <label>
+        体重(80-300):
+        <input type="text" id="weight" onblur="checkWeight()">
+    </label>
+    <br><br>
+
+    <button type="submit">提交</button>
+
+</form>
+
+<script>
+    function checkLastName() {
+        let ln = document.getElementById("lastName").value.trim();
+        if (ln === "") {
+            alert("姓不能为空");
+            return false;
+        }
+        return true;
+    }
+
+    function checkFirstName() {
+        let fn = document.getElementById("firstName").value.trim();
+        if (fn === "") {
+            alert("名不能为空");
+            return false;
+        }
+        return true;
+    }
+
+    function checkMiddleInitial() {
+        let mi = document.getElementById("middleInitial").value.trim();
+        if (!/^[A-Za-z]$/.test(mi)) {
+            alert("中间名首字母必须是一个字母");
+            return false;
+        }
+        return true;
+    }
+
+    function checkAge() {
+        let age = document.getElementById("age").value.trim();
+
+        if (age === "" || isNaN(age)) {
+            alert("年龄必须是数字");
+            return false;
+        }
+
+        age = parseInt(age);
+
+        if (age <= 17) {
+            alert("年龄必须大于17岁");
+            return false;
+        }
+        return true;
+    }
+
+    function checkWeight() {
+        let weight = document.getElementById("weight").value.trim();
+
+        if (weight === "" || isNaN(weight)) {
+            alert("体重必须是数字");
+            return false;
+        }
+
+        weight = parseInt(weight);
+
+        if (weight < 80 || weight > 300) {
+            alert("体重必须在80到300 范围之间");
+            return false;
+        }
+        return true;
+    }
+
+    function validateForm() {
+        if (
+            !checkLastName() ||
+            !checkFirstName() ||
+            !checkMiddleInitial() ||
+            !checkAge() ||
+            !checkWeight()
+        ) {
+            return false;
+        }
+
+        alert("提交成功！");
+        return false; 
+    }
+</script>
+
+</body>
+</html>

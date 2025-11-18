@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>统计数组中数值的正负零数量</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px 0;
+        }
+        input {
+            width: 350px;
+            padding: 6px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 6px 15px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>统计数组中的负值、零值和正值数量</h1>
+    <div class="container">
+        <p>请输入数值数组（用英文逗号分隔）</p>
+        <input type="text" id="arrayInput">
+        <button onclick="countValues()">统计</button>
+    </div>
+    <div class="result"></div>
+
+    <script>
+        function counter(arr) {
+            let negative = 0; 
+            let zero = 0;     
+            let positive = 0; 
+
+            for (let num of arr) {
+                switch (true) {
+                    case num < 0:
+                        negative++;
+                        break;
+                    case num === 0:
+                        zero++;
+                        break;
+                    case num > 0:
+                        positive++;
+                        break;
+                }
+            }
+
+            return { negative, zero, positive };
+        }
+
+        function countValues() {
+            const input = document.getElementById('arrayInput').value;
+            const resultDiv = document.querySelector('.result');
+
+            if (!input.trim()) {
+                resultDiv.textContent = "请输入有效的数值数组";
+                return;
+            }
+
+            const numArray = input.split(',')
+                .map(item => item.trim())
+                .filter(item => item !== '')
+                .map(Number);
+
+            if (numArray.some(isNaN)) {
+                resultDiv.textContent = "输入包含无效数值";
+                return;
+            }
+
+            const counts = counter(numArray);
+
+            resultDiv.innerHTML = `
+                <p>输入的数组：[${numArray.join(', ')}]</p>
+                <p>负值元素的数目：${counts.negative}</p>
+                <p>零值元素的数目：${counts.zero}</p>
+                <p>正值元素的数目：${counts.positive}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

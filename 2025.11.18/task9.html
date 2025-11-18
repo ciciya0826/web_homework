@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task9</title>
+</head>
+<body>
+
+<h2>请选择水果</h2>
+
+<form id="fruitForm">
+
+    <label>
+        <input type="checkbox" value="0.59">
+        苹果 (每个59美分)
+    </label><br>
+
+    <label>
+        <input type="checkbox" value="0.49">
+        桔子 (每个49美分)
+    </label><br>
+
+    <label>
+        <input type="checkbox" value="0.39">
+        香蕉 (每个39美分)
+    </label><br><br>
+
+    <button type="submit">提交</button>
+
+</form>
+
+<script>
+    let total = 0;
+
+    function updateTotal(event) {
+        const checkbox = event.target;
+        const price = parseFloat(checkbox.value);
+
+        if (checkbox.checked) {
+            total += price;
+        } else {
+            total -= price;
+        }
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault(); 
+
+        let tax = total * 0.05;
+        let finalCost = (total + tax).toFixed(2);
+
+        alert("Your total cost is $" + finalCost);
+    }
+
+    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+    checkboxes.forEach(cb => {
+        cb.addEventListener("click", updateTotal);
+    });
+
+    const form = document.getElementById("fruitForm");
+    form.addEventListener("submit", handleSubmit);
+
+</script>
+
+</body>
+</html>

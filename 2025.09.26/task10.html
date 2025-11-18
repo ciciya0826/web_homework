@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>畅销书</title>
+  <style>
+    body {
+      font-family: "黑体", Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    ul.book-list {
+      list-style: none;
+      padding-left: 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    ul.book-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .cover-thumb {
+      width: 60px;
+      height: 90px;
+      object-fit: cover;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      flex: 0 0 60px;
+    }
+    .book-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .title {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+    }
+    .author {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .source-link {
+      font-size: 0.8rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .source-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>畅销书列表</h1>
+  <ul class="book-list">
+    <li>
+      <img class="cover-thumb" src="https://via.placeholder.com/60x90?text=占位封面" alt="畅销书封面">
+      <div class="book-meta">
+        <span class="title">中国通史纲要（上/下）</span>
+        <span class="author">— （出版单位／作者）</span>
+        <a class="source-link" href="https://www.wenming.cn/zg/20241228/d569b6f35eac4226b2e289e55749a784/c.html" target="_blank">来源：文明网报道</a>
+      </div>
+    </li>
+    <li>
+      <img class="cover-thumb" src="https://via.placeholder.com/60x90?text=封面2" alt="书封面2">
+      <div class="book-meta">
+        <span class="title">世界简史</span>
+        <span class="author">— 作者姓名</span>
+        <a class="source-link" href="https://xinwen.bjd.com.cn/channels/5b165687a010550e5ddc0e6a/contentShare/63089c71e4b0f805269410f9/AP658e342ae4b064178154da81.html" target="_blank">来源：北京日报新闻</a>
+      </div>
+    </li>
+    <li>
+      <img class="cover-thumb" src="https://via.placeholder.com/60x90?text=封面3" alt="书封面3">
+      <div class="book-meta">
+        <span class="title">这才是丝绸之路</span>
+        <span class="author">— 侯杨方</span>
+        <a class="source-link" href="https://xinwen.bjd.com.cn/channels/5b165687a010550e5ddc0e6a/contentShare/63089c71e4b0f805269410f9/AP658e342ae4b064178154da81.html" target="_blank">来源：北京日报新闻</a>
+      </div>
+    </li>
+    <li>
+      <img class="cover-thumb" src="https://via.placeholder.com/60x90?text=封面4" alt="书封面4">
+      <div class="book-meta">
+        <span class="title">正道：中国文化传统</span>
+        <span class="author">— 张岱年</span>
+        <a class="source-link" href="https://xinwen.bjd.com.cn/channels/5b165687a010550e5ddc0e6a/contentShare/63089c71e4b0f805269410f9/AP658e342ae4b064178154da81.html" target="_blank">来源：北京日报新闻</a>
+      </div>
+    </li>
+    <li>
+      <img class="cover-thumb" src="https://via.placeholder.com/60x90?text=封面5" alt="书封面5">
+      <div class="book-meta">
+        <span class="title">大国经济学</span>
+        <span class="author">— 出版单位／作者</span>
+        <a class="source-link" href="https://xinwen.bjd.com.cn/channels/5b165687a010550e5ddc0e6a/contentShare/63089c71e4b0f805269410f9/AP658e342ae4b064178154da81.html" target="_blank">来源：北京日报新闻</a>
+      </div>
+    </li>
+  </ul>
+</body>
+</html>
