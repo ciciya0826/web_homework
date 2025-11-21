@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>test</title>
+    <style>
+      h1 {
+        margin-bottom: 100px;
+      }
+      .form-item {
+        margin: 15px 0;
+      }
+      label {
+        display: inline-block;
+        width: 80px;
+      }
+      .tips {
+        color: #333;
+        font-size: 14px;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>欢迎加入本公司，请如实填写你的个人信息!</h1>
+    <h3>所有信息均为必须填</h3>
+
+    <form id="test">
+      <div class="form-item">
+        <label for="username">用户名</label>
+        <input type="text" id="username" required />
+        <span class="tips"
+          >用户名必须以大写字母或下划线开头，其余字符由字母或数字组成，且长度不少于8个字符</span
+        >
+      </div>
+
+      <div class="form-item">
+        <label for="password">密码</label>
+        <input type="password" id="password" required />
+        <span class="tips">密码为6位数字</span>
+      </div>
+
+      <div class="form-item">
+        <label for="confirmPwd">密码确认</label>
+        <input type="password" id="confirmPwd" required />
+      </div>
+
+      <div class="form-item">
+        <label>性别</label>
+        <input type="radio" name="gender" value="male" /> 男
+        <input type="radio" name="gender" value="female" /> 女
+      </div>
+
+      <div class="form-item">
+        <label for="idCard">身份证号</label>
+        <input type="text" id="idCard" required />
+        <span class="tips">18位</span>
+      </div>
+
+      <div class="form-item">
+        <label for="phone">电话号码</label>
+        <input type="text" id="phone" required />
+        <span class="tips">11位手机号</span>
+      </div>
+
+      <div class="form-item">
+        <label for="email">Email</label>
+        <input type="email" id="email" required />
+      </div>
+
+      <button type="reset">重置</button>
+      <button type="submit">提交</button>
+    </form>
+
+    <script src="test.js"></script>
+  </body>
+</html>
