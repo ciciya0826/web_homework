@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>clockCanvas</title>
+    <style>
+      canvas {
+        border: 2px solid #333;
+        border-radius: 50%;
+        background: #f8f8f8;
+        display: block;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="clockCanvas" width="400" height="400"></canvas>
+
+    <script>
+      const canvas = document.getElementById("clockCanvas");
+      const context = canvas.getContext("2d");
+      const clockRadius = canvas.width / 2 - 10;
+      let loop;
+
+      function drawCircle() {
+        context.save();
+        context.translate(canvas.width / 2, canvas.height / 2);
+        context.beginPath();
+        context.arc(0, 0, clockRadius, 0, 2 * Math.PI);
+        context.strokeStyle = "#222";
+        context.lineWidth = 8;
+        context.stroke();
+        context.beginPath();
+        context.arc(0, 0, clockRadius - 5, 0, 2 * Math.PI);
+        context.strokeStyle = "#666";
+        context.lineWidth = 1;
+        context.stroke();
+        context.restore();
+      }
+
+      function drawCenter() {
+        context.save();
+        context.translate(canvas.width / 2, canvas.height / 2);
+        context.beginPath();
+        context.arc(0, 0, 8, 0, 2 * Math.PI);
+        context.fillStyle = "#333";
+        context.fill();
+        context.restore();
+      }
+
+      function drawHands() {
+        const now = new Date();
+        const hours = now.getHours() % 12;
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        const hourAngle =
+          ((hours * 30 + minutes * 0.5) * Math.PI) / 180 - Math.PI / 2;
+        const minuteAngle =
+          ((minutes * 6 + seconds * 0.1) * Math.PI) / 180 - Math.PI / 2;
+        const secondAngle = (seconds * 6 * Math.PI) / 180 - Math.PI / 2;
+
+        context.save();
+        context.translate(canvas.width / 2, canvas.height / 2);
+
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(
+          Math.cos(hourAngle) * clockRadius * 0.6,
+          Math.sin(hourAngle) * clockRadius * 0.6
+        );
+        context.strokeStyle = "#000";
+        context.lineWidth = 6;
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(
+          Math.cos(minuteAngle) * clockRadius * 0.8,
+          Math.sin(minuteAngle) * clockRadius * 0.8
+        );
+        context.strokeStyle = "#333";
+        context.lineWidth = 4;
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(
+          Math.cos(secondAngle) * clockRadius * 0.9,
+          Math.sin(secondAngle) * clockRadius * 0.9
+        );
+        context.strokeStyle = "#f00";
+        context.lineWidth = 2;
+        context.stroke();
+
+        context.restore();
+      }
+
+      function drawNumerals() {
+        context.save();
+        context.translate(canvas.width / 2, canvas.height / 2);
+        context.font = `${clockRadius * 0.18}px Arial`;
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.fillStyle = "#222";
+
+        for (let num = 1; num <= 12; num++) {
+          const angle = (num * 30 * Math.PI) / 180 - Math.PI / 2; // 每个数字间隔30度
+          const x = Math.cos(angle) * (clockRadius - 25);
+          const y = Math.sin(angle) * (clockRadius - 25);
+          context.fillText(num, x, y);
+        }
+
+        context.restore();
+      }
+
+      function drawClock() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        drawCircle();
+        drawCenter();
+        drawHands();
+        drawNumerals();
+      }
+
+      loop = setInterval(drawClock, 1000);
+
+      drawClock();
+    </script>
+  </body>
+</html>
