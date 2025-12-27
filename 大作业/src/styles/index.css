@@ -1,0 +1,378 @@
+/* 全局样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+}
+
+.app-container {
+  height: 100vh;
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  background: #fff;
+  border-right: 1px solid #e8e8e8;
+  padding: 20px 0;
+}
+
+/* Sidebar菜单项样式 */
+.sidebar .ant-menu {
+  background: transparent !important;
+  border: none !important;
+}
+
+.sidebar .ant-menu-item {
+  margin: 4px 8px !important;
+  border-radius: var(--border-radius, 20px) !important;
+  transition: all 0.3s ease !important;
+  height: 56px !important;
+  line-height: 56px !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+.sidebar .ant-menu-item .ant-menu-item-icon {
+  font-size: 20px !important;
+  color: var(--primary-color, #7ce5ef) !important;
+  margin-right: 12px !important;
+}
+
+.sidebar .ant-menu-item {
+  color: #333 !important;
+}
+
+.sidebar .ant-menu-item:hover:not(.ant-menu-item-selected) {
+  background-color: rgba(124, 229, 239, 0.1) !important;
+  color: var(--primary-color, #7ce5ef) !important;
+}
+
+.sidebar .ant-menu-item:hover:not(.ant-menu-item-selected) .ant-menu-item-icon {
+  color: var(--primary-color, #7ce5ef) !important;
+}
+
+.sidebar .ant-menu-item-selected {
+  background: linear-gradient(135deg, var(--primary-color, #7ce5ef) 0%, var(--active-color, #f4bff4) 100%) !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.sidebar .ant-menu-item-selected .ant-menu-item-icon {
+  color: white !important;
+}
+
+.sidebar .ant-menu-item-selected::after {
+  display: none !important;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+/* 任务创建区域样式 */
+.task-creation-area {
+  transition: all 0.3s ease;
+}
+
+.task-creation-area:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 任务卡片样式 */
+.task-card {
+  transition: all 0.3s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.task-list {
+  padding-right: 4px;
+}
+
+/* 主内容区域滚动条样式 */
+.main-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 标签页样式优化 */
+.ant-tabs-tab {
+  font-weight: 500;
+}
+
+.ant-tabs-tab-active {
+  font-weight: 600;
+}
+
+/* 按钮样式优化 */
+.ant-btn-sm {
+  font-weight: 500;
+}
+
+/* 输入框聚焦效果 */
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* 日期选择器样式 */
+.ant-picker {
+  border-radius: 6px;
+}
+
+.ant-picker:hover {
+  border-color: #1890ff;
+}
+
+/* 空状态样式 */
+.ant-empty {
+  margin: 40px 0;
+}
+
+.calendar-container {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 14px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  
+  .main-content {
+    padding: 16px;
+  }
+  
+  .task-card .ant-card-body {
+    padding: 12px 16px;
+  }
+  
+  .task-card h4 {
+    font-size: 14px;
+  }
+}
+
+/* 动画效果 */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 100px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.task-card {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* 标签筛选样式 */
+.filter-tag {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.filter-tag:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.filter-tag.active {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ant Design Tag 样式覆盖 */
+.ant-tag {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.ant-tag:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 快捷日期按钮样式 */
+.quick-date-btn {
+  border-radius: 16px !important;
+  font-size: 12px;
+  height: 28px;
+  padding: 0 12px;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.quick-date-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quick-date-btn.ant-btn-primary {
+  background: #1890ff;
+  border-color: #1890ff;
+}
+
+/* 排序下拉菜单样式 */
+.ant-dropdown-menu-item:hover {
+  background-color: #f0f8ff;
+}
+
+.ant-dropdown-menu-item[style*="color: rgb(24, 144, 255)"] {
+  background-color: #f0f8ff;
+  font-weight: 600;
+}
+
+/* 搜索框样式优化 */
+.ant-input-search .ant-input-group .ant-input-affix-wrapper {
+  border-radius: 6px 0 0 6px;
+}
+
+.ant-input-search .ant-input-search-button {
+  border-radius: 0 6px 6px 0;
+}
+
+/* 任务创建区域动画 */
+.task-creation-area {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.task-creation-area:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.task-creation-area .ant-input-affix-wrapper:focus,
+.task-creation-area .ant-input-affix-wrapper-focused {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .page-header > div {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+  
+  .page-header .ant-space {
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  
+  .page-header > div > div:last-child {
+    justify-content: center;
+  }
+  
+  .task-creation-area > div:last-child {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .task-creation-area .ant-space:last-child {
+    margin-left: 0 !important;
+    justify-content: center;
+  }
+}
